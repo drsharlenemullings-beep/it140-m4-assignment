@@ -8,22 +8,52 @@
 # Your finished pseudocode should address every requirement in the
 # current Module Four Assignment Guidelines and Rubric.
 
-START hilow_game
+START higher_lower_game
 
-    # Establish a valid guessing range.
-    TODO: Obtain the lower and upper bounds.
-    TODO: Repeat as needed until the bounds satisfy the requirement.
+    DISPLAY "Enter the lower bound:"
+    INPUT lower_bound
 
-    # Establish the number the player is trying to guess.
-    TODO: Generate the required random number from the valid range.
+    DISPLAY "Enter the upper bound:"
+    INPUT upper_bound
 
-    # Play the game.
-    TODO: Obtain and validate a guess using the selected bounds.
-    TODO: Repeat the required game behavior until the correct guess.
-        TODO: Compare a valid guess and provide the required feedback.
-        TODO: Obtain and validate another guess when play continues.
+    WHILE lower_bound >= upper_bound
+        DISPLAY "The lower bound must be less than the upper bound."
 
-END hilow_game
+        DISPLAY "Enter the lower bound again:"
+        INPUT lower_bound
 
-# === References ===
-# TODO: Add references for sources you used, or delete this line if unused.
+        DISPLAY "Enter the upper bound again:"
+        INPUT upper_bound
+    ENDWHILE
+
+    LET secret_number = RANDOM number between lower_bound and upper_bound
+
+    DISPLAY "Guess a number between " + lower_bound + " and " + upper_bound
+    INPUT guess
+
+    WHILE guess < lower_bound OR guess > upper_bound
+        DISPLAY "Your guess must be between " + lower_bound + " and " + upper_bound
+        INPUT guess
+    ENDWHILE
+
+    WHILE guess != secret_number
+
+        IF guess < secret_number THEN
+            DISPLAY "Your guess is too low."
+        ELSE
+            DISPLAY "Your guess is too high."
+        ENDIF
+
+        DISPLAY "Enter another guess:"
+        INPUT guess
+
+        WHILE guess < lower_bound OR guess > upper_bound
+            DISPLAY "Your guess must be between " + lower_bound + " and " + upper_bound
+            INPUT guess
+        ENDWHILE
+
+    ENDWHILE
+
+    DISPLAY "You guessed the correct number!"
+
+END higher_lower_game
